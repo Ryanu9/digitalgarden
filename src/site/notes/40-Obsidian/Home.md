@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"","updated":"2024-11-25T00:30:20.664+08:00"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -22,7 +22,6 @@ continue...
 | [[24-渗透/HMV/14.Listen\|14.Listen]]               | sml        | ⭐️⭐️⭐️     |
 | [[24-渗透/HMV/15.Random\|15.Random]]               | sml        | ⭐️⭐️⭐️     |
 | [[24-渗透/HMV/16. attack\|16. attack]]             | sml        | ⭐️⭐️       |
-| [[24-渗透/HMV/16.Troya\|16.Troya]]                 | sml        | 😅         |
 | [[24-渗透/HMV/17.SuidyReverse\|17.SuidyReverse]]   | sml        | ⭐️⭐️⭐️     |
 | [[24-渗透/HMV/18.Light\|18.Light]]                 | sml        | ⭐️⭐️⭐️     |
 | [[24-渗透/HMV/19.rubies\|19.rubies]]               | ch4rm      | ⭐️⭐️⭐️⭐️   |
@@ -34,5 +33,6 @@ continue...
 | [[24-渗透/HMV/25.Simple\|25.Simple]]               | GatoGamer  | 😅         |
 | [[24-渗透/HMV/26.TriplAdvisor\|26.TriplAdvisor]]   | josemlwdf  | 😅         |
 | [[24-渗透/HMV/27.Nessus\|27.Nessus]]               | josemlwdf  | ⭐️⭐️⭐️⭐️   |
+| [[24-渗透/HMV/28.Troya\|28.Troya]]                 | sml        | 😅         |
 
 { .block-language-dataview}
