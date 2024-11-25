@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -34,5 +34,6 @@ continue...
 | [[24-渗透/HMV/26.TriplAdvisor\|26.TriplAdvisor]]   | josemlwdf  | 😅         |
 | [[24-渗透/HMV/27.Nessus\|27.Nessus]]               | josemlwdf  | ⭐️⭐️⭐️⭐️   |
 | [[24-渗透/HMV/28.Troya\|28.Troya]]                 | sml        | 😅         |
+| [[24-渗透/HMV/29.Always\|29.Always]]               | ysnmrtksk  | ⭐️⭐️⭐️     |
 
 { .block-language-dataview}
