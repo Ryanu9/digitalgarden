@@ -35,5 +35,6 @@ continue...
 | [[24-渗透/HMV/27.Nessus\|27.Nessus]]               | josemlwdf  | ⭐️⭐️⭐️⭐️   |
 | [[24-渗透/HMV/28.Troya\|28.Troya]]                 | sml        | 😅         |
 | [[24-渗透/HMV/29.Always\|29.Always]]               | ysnmrtksk  | ⭐️⭐️⭐️     |
+| [[24-渗透/HMV/30.runas\|30.runas]]                 | ysnmrtksk  | ⭐️         |
 
 { .block-language-dataview}
