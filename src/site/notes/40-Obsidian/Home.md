@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -39,5 +39,6 @@ continue...
 | [[24-渗透/HMV/31.quoted\|31.quoted]]               | ysnmrtksk  | ⭐️⭐️⭐️⭐️⭐️ |
 | [[24-渗透/HMV/32.UnbakedPie\|32.UnbakedPie]]       | ch4rm      | ⭐️⭐️⭐️⭐️⭐️ |
 | [[24-渗透/HMV/33.pickle\|33.pickle]]               | 0xEEX75    | ⭐️⭐️⭐️⭐️⭐️ |
+| [[24-渗透/HMV/34.hacked\|34.hacked]]               | sml        | ⭐️⭐️⭐️⭐️   |
 
 { .block-language-dataview}
