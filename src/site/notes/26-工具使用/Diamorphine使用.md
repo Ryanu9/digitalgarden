@@ -3,7 +3,8 @@
 ---
 
 项目地址 https://github.com/m0nad/Diamorphine
-
+Diamorphine 中文名 海洛因
+是一个rootkit工具
 ## 1. Features 特征
 - 加载后，模块开始不可见
 - 通过发送信号隐藏/取消隐藏任何进程 31
@@ -12,48 +13,48 @@
 - 以 MAGIC_PREFIX 开头的文件或目录将变得不可见
 
 发送信号
-```
+```bash
 kill -63 <pid>
 ```
 ## 2. 安装
 验证内核是否为 2.6.x/3.x/4.x/5.x
 
-```
+```bash
 uname -r
 ```
 
 Clone the repository 克隆存储库
 
-```
+```bash
 git clone https://github.com/m0nad/Diamorphine
 ```
 
 Enter the folder 进入文件夹
 
-```
+```bash
 cd Diamorphine
 ```
 
 Compile 编译
 
-```
+```bash
 make
 ```
 
 Load the module(as root) 加载模块（以 root 身份）
 
-```
+```bash
 insmod diamorphine.ko
 ```
 ## 3. Uninstall 卸载
 模块开始时不可见，要删除您需要使其可见
 
-```
+```bash
 kill -63 0
 ```
 
 然后删除模块（作为 root）
 
-```
+```bash
 rmmod diamorphine
 ```
