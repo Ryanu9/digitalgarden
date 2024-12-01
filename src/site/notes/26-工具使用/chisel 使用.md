@@ -21,4 +21,4 @@ chisel 是一个go语言开发的隧道工具
 > 将**服务端**的 `1111` 端口 转发到**客户端**的 `127.0.0.1:8000`
 
 
-![](/img/user/26-工具使用/assets/Pasted image 20241201144704.png)
+![](https://yurain.oss-cn-chengdu.aliyuncs.com/Obsidian/Pasted%20image%2020241201144704.png)
