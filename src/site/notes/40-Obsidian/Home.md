@@ -36,5 +36,8 @@ continue...
 | [[24-渗透/HMV/28.Troya\|28.Troya]]                 | sml        | 😅         |
 | [[24-渗透/HMV/29.Always\|29.Always]]               | ysnmrtksk  | ⭐️⭐️⭐️     |
 | [[24-渗透/HMV/30.runas\|30.runas]]                 | ysnmrtksk  | ⭐️         |
+| [[24-渗透/HMV/31.quoted\|31.quoted]]               | ysnmrtksk  | ⭐️⭐️⭐️⭐️⭐️ |
+| [[24-渗透/HMV/32.UnbakedPie\|32.UnbakedPie]]       | ch4rm      | ⭐️⭐️⭐️⭐️⭐️ |
+| [[24-渗透/HMV/33.pickle\|33.pickle]]               | 0xEEX75    | ⭐️⭐️⭐️⭐️⭐️ |
 
 { .block-language-dataview}
