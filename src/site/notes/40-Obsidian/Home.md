@@ -40,5 +40,6 @@ continue...
 | [[24-渗透/HMV/32.UnbakedPie\|32.UnbakedPie]]       | ch4rm      | ⭐️⭐️⭐️⭐️⭐️ |
 | [[24-渗透/HMV/33.pickle\|33.pickle]]               | 0xEEX75    | ⭐️⭐️⭐️⭐️⭐️ |
 | [[24-渗透/HMV/34.hacked\|34.hacked]]               | sml        | ⭐️⭐️⭐️⭐️   |
+| [[24-渗透/HMV/35.Soul\|35.Soul]]                   | sml        | ⭐️⭐️⭐️⭐️⭐️ |
 
 { .block-language-dataview}
