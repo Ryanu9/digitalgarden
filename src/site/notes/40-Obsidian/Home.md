@@ -43,6 +43,7 @@ continue...
 | [[24-渗透/HMV/34.hacked\|34.hacked]]               | sml        | ⭐️⭐️⭐️⭐️   |
 | [[24-渗透/HMV/35.Soul\|35.Soul]]                   | sml        | ⭐️⭐️⭐️⭐️⭐️ |
 | [[24-渗透/HMV/36.Adroit\|36.Adroit]]               | alienum    | ⭐️⭐️⭐️⭐️   |
+| [[24-渗透/HMV/37.emma\|37.emma]]                   | Emma       | ⭐️⭐️⭐️⭐️   |
 
 { .block-language-dataview}
 ## 2. THLwp 
