@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -44,6 +44,8 @@ continue...
 | [[24-渗透/HMV/35.Soul\|35.Soul]]                   | sml        | ⭐️⭐️⭐️⭐️⭐️ |
 | [[24-渗透/HMV/36.Adroit\|36.Adroit]]               | alienum    | ⭐️⭐️⭐️⭐️   |
 | [[24-渗透/HMV/37.emma\|37.emma]]                   | Emma       | ⭐️⭐️⭐️⭐️   |
+| [[24-渗透/HMV/38.DC04\|38.DC04]]                   | \-         | ⭐️⭐️⭐️⭐️⭐️ |
+| [[24-渗透/HMV/39.Hash\|39.Hash]]                   | sml        | ⭐️⭐️       |
 
 { .block-language-dataview}
 ## 2. THLwp 
