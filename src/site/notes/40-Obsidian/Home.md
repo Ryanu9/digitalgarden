@@ -57,5 +57,6 @@ continue...
 | [[24-渗透/THL/3.Doraemon\|3.Doraemon]]       | Windows | ⭐️         |
 | [[24-渗透/THL/4.BIG\|4.BIG]]                 | Windows | ⭐️⭐️⭐️⭐️   |
 | [[24-渗透/THL/5.curiosity\|5.curiosity]]     | Windows | ⭐️⭐️⭐️⭐️⭐️ |
+| [[24-渗透/THL/6.curiosity2\|6.curiosity2]]   | Windows | ⭐️⭐️⭐️⭐️⭐️ |
 
 { .block-language-dataview}
