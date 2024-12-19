@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
