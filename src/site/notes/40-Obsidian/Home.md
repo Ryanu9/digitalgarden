@@ -44,7 +44,7 @@ continue...
 | [[24-渗透/HMV/35.Soul\|35.Soul]]                   | Linux   | ⭐️⭐️⭐️⭐️⭐️ | sml        |
 | [[24-渗透/HMV/36.Adroit\|36.Adroit]]               | Linux   | ⭐️⭐️⭐️⭐️   | alienum    |
 | [[24-渗透/HMV/37.emma\|37.emma]]                   | Linux   | ⭐️⭐️⭐️⭐️   | Emma       |
-| [[24-渗透/HMV/38.DC04\|38.DC04]]                   | Windows | ⭐️⭐️⭐️⭐️⭐️ | \-         |
+| [[24-渗透/HMV/38.DC04\|38.DC04]]                   | Windows | ⭐️⭐️⭐️⭐️⭐️ | josemlwdf  |
 | [[24-渗透/HMV/39.Hash\|39.Hash]]                   | Linux   | ⭐️⭐️       | sml        |
 | [[24-渗透/HMV/40.orasi\|40.orasi]]                 | Linux   | ⭐️⭐️⭐️⭐️   | alienum    |
 
