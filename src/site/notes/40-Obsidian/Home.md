@@ -48,7 +48,7 @@ continue...
 | [[24-渗透/HMV/39.Hash\|39.Hash]]                   | Linux   | ⭐️⭐️       | sml        |
 | [[24-渗透/HMV/40.orasi\|40.orasi]]                 | Linux   | ⭐️⭐️⭐️⭐️   | alienum    |
 | [[24-渗透/HMV/41.Zday\|41.Zday]]                   | Linux   | ⭐️⭐️⭐️⭐️⭐️ | sml        |
-| [[24-渗透/HMV/42.eighty\|42.eighty]]               | Linux   | ⭐️⭐️⭐️⭐️⭐️ | sml        |
+| [[24-渗透/HMV/42.eighty\|42.eighty]]               | Linux   | ⭐️⭐️⭐️     | sml        |
 
 { .block-language-dataview}
 ## 2. THLwp 
