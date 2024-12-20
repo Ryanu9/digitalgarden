@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -49,6 +49,7 @@ continue...
 | [[24-渗透/HMV/40.orasi\|40.orasi]]                 | Linux   | ⭐️⭐️⭐️⭐️   | alienum    |
 | [[24-渗透/HMV/41.Zday\|41.Zday]]                   | Linux   | ⭐️⭐️⭐️⭐️⭐️ | sml        |
 | [[24-渗透/HMV/42.eighty\|42.eighty]]               | Linux   | ⭐️⭐️⭐️     | sml        |
+| [[24-渗透/HMV/43.p4l4nc4\|43.p4l4nc4]]             | Linux   | ⭐️⭐️       | elpensador |
 
 { .block-language-dataview}
 ## 2. THLwp 
