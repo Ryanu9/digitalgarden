@@ -51,6 +51,7 @@ continue...
 | [[24-渗透/HMV/42.eighty\|42.eighty]]               | Linux   | ⭐️⭐️⭐️     | sml        |
 | [[24-渗透/HMV/43.p4l4nc4\|43.p4l4nc4]]             | Linux   | ⭐️⭐️       | elpensador |
 | [[24-渗透/HMV/44. Diophante\|44. Diophante]]       | Linux   | ⭐️⭐️⭐️⭐️⭐️ | cromiphi   |
+| [[24-渗透/HMV/45.choc\|45.choc]]                   | Linux   | ⭐️⭐️⭐️⭐️⭐️ | cromiphi   |
 
 { .block-language-dataview}
 ## 2. THLwp 
