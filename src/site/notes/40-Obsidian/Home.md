@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -55,15 +55,16 @@ continue...
 
 { .block-language-dataview}
 ## 2. THLwp 
-| File                                          | 系统      | 难度         |
-| --------------------------------------------- | ------- | ---------- |
-| [[24-渗透/THL/1.Chimichurri\|1.Chimichurri]] | Windows | ⭐️⭐️⭐️     |
-| [[24-渗透/THL/2.Pacharan\|2.Pacharan]]       | Windows | ⭐️⭐️⭐️⭐️   |
-| [[24-渗透/THL/3.Doraemon\|3.Doraemon]]       | Windows | ⭐️         |
-| [[24-渗透/THL/4.BIG\|4.BIG]]                 | Windows | ⭐️⭐️⭐️⭐️   |
-| [[24-渗透/THL/5.curiosity\|5.curiosity]]     | Windows | ⭐️⭐️⭐️⭐️⭐️ |
-| [[24-渗透/THL/6.curiosity2\|6.curiosity2]]   | Windows | ⭐️⭐️⭐️⭐️⭐️ |
-| [[24-渗透/THL/7.Pildoritas\|7.Pildoritas]]   | Windows | ⭐️⭐️⭐️⭐️⭐️ |
-| [[24-渗透/THL/8.Milanesa\|8.Milanesa]]       | Windows | ⭐️⭐️⭐️     |
+| File                                            | 系统      | 难度         |
+| ----------------------------------------------- | ------- | ---------- |
+| [[24-渗透/THL/1.Chimichurri\|1.Chimichurri]]   | Windows | ⭐️⭐️⭐️     |
+| [[24-渗透/THL/2.Pacharan\|2.Pacharan]]         | Windows | ⭐️⭐️⭐️⭐️   |
+| [[24-渗透/THL/3.Doraemon\|3.Doraemon]]         | Windows | ⭐️         |
+| [[24-渗透/THL/4.BIG\|4.BIG]]                   | Windows | ⭐️⭐️⭐️⭐️   |
+| [[24-渗透/THL/5.curiosity\|5.curiosity]]       | Windows | ⭐️⭐️⭐️⭐️⭐️ |
+| [[24-渗透/THL/6.curiosity2\|6.curiosity2]]     | Windows | ⭐️⭐️⭐️⭐️⭐️ |
+| [[24-渗透/THL/7.Pildoritas\|7.Pildoritas]]     | Windows | ⭐️⭐️⭐️⭐️⭐️ |
+| [[24-渗透/THL/8.Milanesa\|8.Milanesa]]         | Windows | ⭐️⭐️⭐️     |
+| [[24-渗透/THL/9.Binary Trail\|9.Binary Trail]] | Linux   | ⭐️⭐️⭐️⭐️⭐️ |
 
 { .block-language-dataview}
