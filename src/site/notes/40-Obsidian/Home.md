@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -65,6 +65,6 @@ continue...
 | [[24-渗透/THL/6.curiosity2\|6.curiosity2]]     | Windows | ⭐️⭐️⭐️⭐️⭐️ |
 | [[24-渗透/THL/7.Pildoritas\|7.Pildoritas]]     | Windows | ⭐️⭐️⭐️⭐️⭐️ |
 | [[24-渗透/THL/8.Milanesa\|8.Milanesa]]         | Windows | ⭐️⭐️⭐️     |
-| [[24-渗透/THL/9.Binary Trail\|9.Binary Trail]] | Linux   | ⭐️⭐️⭐️⭐️⭐️ |
+| [[24-渗透/THL/9.Binary Trail\|9.Binary Trail]] | Linux   | ⭐️⭐️       |
 
 { .block-language-dataview}
