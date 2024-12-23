@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -52,6 +52,7 @@ continue...
 | [[24-渗透/HMV/43.p4l4nc4\|43.p4l4nc4]]             | Linux   | ⭐️⭐️       | elpensador |
 | [[24-渗透/HMV/44. Diophante\|44. Diophante]]       | Linux   | ⭐️⭐️⭐️⭐️⭐️ | cromiphi   |
 | [[24-渗透/HMV/45.choc\|45.choc]]                   | Linux   | ⭐️⭐️⭐️⭐️⭐️ | cromiphi   |
+| [[24-渗透/HMV/46.moosage\|46.moosage]]             | Linux   | ⭐️⭐️⭐️⭐️   | sml        |
 
 { .block-language-dataview}
 ## 2. THLwp 
@@ -66,5 +67,16 @@ continue...
 | [[24-渗透/THL/7.Pildoritas\|7.Pildoritas]]     | Windows | ⭐️⭐️⭐️⭐️⭐️ |
 | [[24-渗透/THL/8.Milanesa\|8.Milanesa]]         | Windows | ⭐️⭐️⭐️     |
 | [[24-渗透/THL/9.Binary Trail\|9.Binary Trail]] | Linux   | ⭐️⭐️       |
+| [[24-渗透/THL/10.Cyberguard\|10.Cyberguard]]   | \-      | ⭐️⭐️⭐️⭐️⭐️ |
 
 { .block-language-dataview}
+## 3. Vulnyx
+| File                                           | 系统      | 难度  | 作者      |
+| ---------------------------------------------- | ------- | --- | ------- |
+| [[24-渗透/Vulnyx/Hosting\|Hosting]]           | Windows | \-  | d4t4s3c |
+| [[24-渗透/Vulnyx/1.Experience\|1.Experience]] | Windows | ⭐️  | d4t4s3c |
+| [[24-渗透/Vulnyx/2.Eternal\|2.Eternal]]       | Windows | ⭐️  | d4t4s3c |
+| [[24-渗透/Vulnyx/3.Admin\|3.Admin]]           | Windows | ⭐️⭐ | d4t4s3c |
+
+{ .block-language-dataview}
+
