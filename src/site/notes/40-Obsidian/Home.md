@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -71,12 +71,12 @@ continue...
 
 { .block-language-dataview}
 ## 3. Vulnyx
-| File                                           | 系统      | 难度  | 作者      |
-| ---------------------------------------------- | ------- | --- | ------- |
-| [[24-渗透/Vulnyx/Hosting\|Hosting]]           | Windows | \-  | d4t4s3c |
-| [[24-渗透/Vulnyx/1.Experience\|1.Experience]] | Windows | ⭐️  | d4t4s3c |
-| [[24-渗透/Vulnyx/2.Eternal\|2.Eternal]]       | Windows | ⭐️  | d4t4s3c |
-| [[24-渗透/Vulnyx/3.Admin\|3.Admin]]           | Windows | ⭐️⭐ | d4t4s3c |
+| File                                           | 系统      | 难度   | 作者      |
+| ---------------------------------------------- | ------- | ---- | ------- |
+| [[24-渗透/Vulnyx/1.Experience\|1.Experience]] | Windows | ⭐️   | d4t4s3c |
+| [[24-渗透/Vulnyx/2.Eternal\|2.Eternal]]       | Windows | ⭐️   | d4t4s3c |
+| [[24-渗透/Vulnyx/3.Admin\|3.Admin]]           | Windows | ⭐️⭐  | d4t4s3c |
+| [[24-渗透/Vulnyx/4.Hosting\|4.Hosting]]       | Windows | ⭐️⭐️ | d4t4s3c |
 
 { .block-language-dataview}
 
