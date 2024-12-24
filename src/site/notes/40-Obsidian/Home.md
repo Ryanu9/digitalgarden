@@ -1,5 +1,5 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -53,6 +53,7 @@ continue...
 | [[24-渗透/HMV/44. Diophante\|44. Diophante]]       | Linux   | ⭐️⭐️⭐️⭐️⭐️ | cromiphi   |
 | [[24-渗透/HMV/45.choc\|45.choc]]                   | Linux   | ⭐️⭐️⭐️⭐️⭐️ | cromiphi   |
 | [[24-渗透/HMV/46.moosage\|46.moosage]]             | Linux   | ⭐️⭐️⭐️⭐️   | sml        |
+| [[24-渗透/HMV/47.BlackWidow\|47.BlackWidow]]       | Linux   | ⭐️⭐️⭐️⭐️   | 0xJin      |
 
 { .block-language-dataview}
 ## 2. THLwp 
