@@ -1,5 +1,5 @@
 ---
-{"created":"2024-12-26T14:21:39.594+08:00","tags":["obsidian","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-12-26T14:21:39.594+08:00","tags":["obsidian","gardenEntry","gardenEntry","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
@@ -7,7 +7,6 @@ continue...
 | 文件名                                                 | 系统      | 难度         | 作者         |
 | --------------------------------------------------- | ------- | ---------- | ---------- |
 | [[24-渗透/HMV/challenges/Misc\|Misc]]              | \-      | \-         | \-         |
-| [[24-渗透/HMV/deba\|deba]]                         | Linux   | ⭐️⭐️⭐️⭐️⭐️ | nolose     |
 | [[24-渗透/HMV/0.virtualbox网络配置\|0.virtualbox网络配置]] | \-      | null       | null       |
 | [[24-渗透/HMV/1.Gift\|1.Gift]]                     | Linux   | ⭐️         | sml        |
 | [[24-渗透/HMV/2.Flower\|2.Flower]]                 | Linux   | ⭐️⭐️       | sml        |
@@ -56,6 +55,7 @@ continue...
 | [[24-渗透/HMV/45.choc\|45.choc]]                   | Linux   | ⭐️⭐️⭐️⭐️⭐️ | cromiphi   |
 | [[24-渗透/HMV/46.moosage\|46.moosage]]             | Linux   | ⭐️⭐️⭐️⭐️   | sml        |
 | [[24-渗透/HMV/47.BlackWidow\|47.BlackWidow]]       | Linux   | ⭐️⭐️⭐️⭐️   | 0xJin      |
+| [[24-渗透/HMV/48.deba\|48.deba]]                   | Linux   | ⭐️⭐️⭐️⭐️⭐️ | nolose     |
 
 { .block-language-dataview}
 ## 2. THLwp 
