@@ -1,11 +1,13 @@
 ---
-{"created":"2024-11-24T23:14:27.613+08:00","tags":["obsidian","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
+{"created":"2024-12-26T14:21:39.594+08:00","tags":["obsidian","gardenEntry"],"Type":"null","dg-publish":true,"dg-home":"true","permalink":"/40-Obsidian/Home/","dgPassFrontmatter":true,"noteIcon":"2"}
 ---
 
 continue...
 ## 1. HMVwp
-| File                                                | 系统      | 难度         | 作者         |
+| 文件名                                                 | 系统      | 难度         | 作者         |
 | --------------------------------------------------- | ------- | ---------- | ---------- |
+| [[24-渗透/HMV/challenges/Misc\|Misc]]              | \-      | \-         | \-         |
+| [[24-渗透/HMV/deba\|deba]]                         | Linux   | ⭐️⭐️⭐️⭐️⭐️ | nolose     |
 | [[24-渗透/HMV/0.virtualbox网络配置\|0.virtualbox网络配置]] | \-      | null       | null       |
 | [[24-渗透/HMV/1.Gift\|1.Gift]]                     | Linux   | ⭐️         | sml        |
 | [[24-渗透/HMV/2.Flower\|2.Flower]]                 | Linux   | ⭐️⭐️       | sml        |
@@ -57,7 +59,7 @@ continue...
 
 { .block-language-dataview}
 ## 2. THLwp 
-| File                                            | 系统      | 难度         |
+| 文件名                                             | 系统      | 难度         |
 | ----------------------------------------------- | ------- | ---------- |
 | [[24-渗透/THL/1.Chimichurri\|1.Chimichurri]]   | Windows | ⭐️⭐️⭐️     |
 | [[24-渗透/THL/2.Pacharan\|2.Pacharan]]         | Windows | ⭐️⭐️⭐️⭐️   |
@@ -72,7 +74,7 @@ continue...
 
 { .block-language-dataview}
 ## 3. Vulnyx
-| File                                           | 系统      | 难度   | 作者      |
+| 文件名                                            | 系统      | 难度   | 作者      |
 | ---------------------------------------------- | ------- | ---- | ------- |
 | [[24-渗透/Vulnyx/1.Experience\|1.Experience]] | Windows | ⭐️   | d4t4s3c |
 | [[24-渗透/Vulnyx/2.Eternal\|2.Eternal]]       | Windows | ⭐️   | d4t4s3c |

